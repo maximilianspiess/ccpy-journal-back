@@ -12,7 +12,7 @@
 	<artifactId>yournal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>yournal</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Journaling project for the Swiss Post</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -20,6 +20,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -47,6 +48,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>
