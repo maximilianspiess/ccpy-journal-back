@@ -9,37 +9,39 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class FileController {
     @Autowired
-    private final FileService fileservice;
+    private final FileService fileService;
 
     public FileController(FileService fileservice) {
-        this.fileservice = fileservice;
+        this.fileService = fileservice;
     }
 
     @GetMapping("/home")
     public String goHome(){
-        return fileservice.getHome();
+        return fileService.getHome();
     }
 
     @GetMapping("/getAllFiles")
     public List<File> getAllFiles() {
-        return fileservice.getAllFiles();
+        return fileService.getAllFiles();
     }
 
     @GetMapping("/getFileById/{id}")
     public Optional<File> getFileById(@PathVariable String id) {
-        return fileservice.getFileById(id);
+        return fileService.getFileById(id);
     }
 
     @PostMapping("/saveFile")
     public String saveFile(@RequestBody File file) {
-        return fileservice.saveFile(file);
+        return fileService.saveFile(file);
     }
 
     @DeleteMapping("/deleteFileById/{id}")
     public String deleteFileById(@PathVariable String id) {
-        return fileservice.deleteFileById(id);
+        return fileService.deleteFileById(id);
     }
 
 
