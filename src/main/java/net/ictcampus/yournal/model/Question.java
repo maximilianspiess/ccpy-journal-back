@@ -10,12 +10,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @ToString
 
-@Document(collection = "owners")
-public class Owner {
+@Document(collection = "questions")
+
+public class Question {
     @Id
     private String id;
-    private String first_name;
-    private String last_name;
-    private String user_name;
-    private String password;
+    private String question_text;
 }

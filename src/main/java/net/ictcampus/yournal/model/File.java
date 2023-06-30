@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @Setter
 @ToString
 
-@Document(collection = "journals")
+@Document(collection = "files")
 public class File {
     @Id
     private String id;
