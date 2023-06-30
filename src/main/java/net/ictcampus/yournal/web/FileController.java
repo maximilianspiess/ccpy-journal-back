@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:5555"})
 
 public class FileController {
     @Autowired
@@ -45,7 +45,7 @@ public class FileController {
         return fileService.getFileById(id);
     }
 
-    @PostMapping("/saveFile")
+    @PostMapping(value = "/saveFile", consumes = "application/json")
     public String saveFile(@RequestBody File file) {
         return fileService.saveFile(file);
     }

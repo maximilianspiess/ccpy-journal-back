@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:5555"})
 
 public class OwnerController {
     @Autowired
@@ -34,7 +34,7 @@ public class OwnerController {
         return ownerService.getOwnerByUsername(username);
     }
 
-    @PostMapping("/saveOwner")
+    @PostMapping(value = "/saveOwner", consumes = "application/json")
     public String saveOwner(@RequestBody Owner owner) {
         return ownerService.saveOwner(owner);
     }

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:5555"})
 public class GroupController {
     @Autowired
     private GroupService groupService;
@@ -33,7 +33,7 @@ public class GroupController {
         return groupService.getGroupById(id);
     }
 
-    @PostMapping("/saveGroup")
+    @PostMapping(value = "/saveGroup", consumes = "application/json")
     public String saveGroup(@RequestBody Group group) {
         return groupService.saveGroup(group);
     }

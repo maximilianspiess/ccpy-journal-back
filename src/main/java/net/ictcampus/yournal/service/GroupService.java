@@ -37,11 +37,12 @@ public class GroupService {
 
     public String saveGroup(Group group) {
         repository.save(group);
-        return "Add file with id: " + group.getId();
+        return "Add group with id: " + group.getId();
     }
 
     public String deleteGroupById(String id) {
         repository.deleteById(id);
-        return "Delete file with id: " + id;
+        return "Delete group" +
+                " with id: " + id;
     }
 }
