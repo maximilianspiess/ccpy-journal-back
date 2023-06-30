@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface OwnerRepository extends MongoRepository<Owner, String> {
 
-    @Query("{user_name: 0?}")
+    @Query("{'user_name': ?0}")
     Optional<Owner> findByUsername(String user_name);
 
 }
