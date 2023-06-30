@@ -1,6 +1,7 @@
 package net.ictcampus.yournal.web;
 
 import net.ictcampus.yournal.model.File;
+import net.ictcampus.yournal.model.FileNameAndId;
 import net.ictcampus.yournal.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +22,17 @@ public class FileController {
 
     @GetMapping("/home")
     public String goHome(){
-        return fileService.getHome();
+        return "You're home :D";
     }
 
     @GetMapping("/getAllFiles")
     public List<File> getAllFiles() {
         return fileService.getAllFiles();
+    }
+
+    @GetMapping("/getFileNameAndGroupId")
+    public List<FileNameAndId> getFileNameAndGrouId() {
+        return fileService.getAllFileNameAndGroupId();
     }
 
     @GetMapping("/getFileById/{id}")

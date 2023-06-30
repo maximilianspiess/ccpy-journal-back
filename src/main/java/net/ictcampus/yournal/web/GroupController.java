@@ -23,6 +23,11 @@ public class GroupController {
         return groupService.getAllGroups();
     }
 
+    @GetMapping("/getAllGroupNames")
+    public List<String> getAllGroupNames() {
+        return groupService.getAllGroupNames();
+    }
+
     @GetMapping("/getGroupById/{id}")
     public Optional<Group> getGroupById(@PathVariable String id) {
         return groupService.getGroupById(id);

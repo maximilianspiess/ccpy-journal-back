@@ -1,10 +1,12 @@
 package net.ictcampus.yournal.service;
 
 import net.ictcampus.yournal.model.File;
+import net.ictcampus.yournal.model.FileNameAndId;
 import net.ictcampus.yournal.repository.FileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,16 +16,21 @@ public class FileService {
     @Autowired
     private FileRepository repository;
 
-    public String getHome() {
-        return "You're home";
-    }
-
     public List<File> getAllFiles() {
         return repository.findAll();
     }
 
     public Optional<File> getFileById(String id) {
         return repository.findById(id);
+    }
+
+    public List<FileNameAndId> getAllFileNameAndGroupId() {
+        List<File> files = repository.findAll();
+        List<FileNameAndId> nameAndIds= new ArrayList<>();
+        for (File file : files) {
+            nameAndIds.add(new FileNameAndId(file.getId(), file.getGroup_id(), file.getFile_name()));
+        }
+        return nameAndIds;
     }
 
     public String saveFile(File file) {

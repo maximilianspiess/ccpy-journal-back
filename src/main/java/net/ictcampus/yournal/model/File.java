@@ -18,6 +18,7 @@ public class File {
     @Id
     private String id;
     private String owner_id;
+    private String group_id;
     private String file_name;
     private String creation_date = LocalDateTime.now().toString();
     private ArrayList<TextBlock> text_blocks;
