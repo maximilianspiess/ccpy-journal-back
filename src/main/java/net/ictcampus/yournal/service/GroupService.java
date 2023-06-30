@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +23,16 @@ public class GroupService {
 
     public Optional<Group> getGroupById(String id) {
         return repository.findById(id);
+    }
+
+    public List<String> getAllGroupNames() {
+        List<Group> groups = repository.findAll();
+        List<String> groupnames = new ArrayList<>();
+        for (Group group : groups) {
+            groupnames.add(group.getGroup_name());
+        }
+
+        return groupnames;
     }
 
     public String saveGroup(Group group) {
