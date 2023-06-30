@@ -35,6 +35,11 @@ public class FileController {
         return fileService.getAllFileNameAndGroupId();
     }
 
+    @GetMapping("/getFilesByGroupId/{group_id}")
+    public List<FileNameAndId> getFilesByGroupId(@PathVariable String group_id) {
+        return fileService.getFilesByGroupId(group_id);
+    }
+
     @GetMapping("/getFileById/{id}")
     public Optional<File> getFileById(@PathVariable String id) {
         return fileService.getFileById(id);

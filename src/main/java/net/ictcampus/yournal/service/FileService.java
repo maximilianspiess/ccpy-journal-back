@@ -33,6 +33,18 @@ public class FileService {
         return nameAndIds;
     }
 
+    public List<FileNameAndId> getFilesByGroupId(String group_id) {
+        List<File> files = repository.findAll();
+        List<FileNameAndId> filesByGroupId = new ArrayList<>();
+        for (File file : files) {
+            if (file.getGroup_id().equals(group_id)) {
+                filesByGroupId.add(new FileNameAndId(file.getId(), file.getGroup_id(), file.getFile_name()));
+            }
+        }
+
+        return filesByGroupId;
+    }
+
     public String saveFile(File file) {
         repository.save(file);
         return "Add file with id: " + file.getId();
