@@ -21,7 +21,7 @@ public class FileController {
     }
 
     @GetMapping("/home")
-    public String goHome(){
+    public String goHome() {
         return "You're home :D";
     }
 
@@ -31,7 +31,7 @@ public class FileController {
     }
 
     @GetMapping("/getFileNameAndGroupId")
-    public List<FileNameAndId> getFileNameAndGrouId() {
+    public List<FileNameAndId> getFileNameAndGroupId() {
         return fileService.getAllFileNameAndGroupId();
     }
 

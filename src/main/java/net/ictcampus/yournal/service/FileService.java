@@ -6,7 +6,6 @@ import net.ictcampus.yournal.repository.FileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,24 +24,17 @@ public class FileService {
     }
 
     public List<FileNameAndId> getAllFileNameAndGroupId() {
-        List<File> files = repository.findAll();
-        List<FileNameAndId> nameAndIds= new ArrayList<>();
-        for (File file : files) {
-            nameAndIds.add(new FileNameAndId(file.getId(), file.getGroup_id(), file.getFile_name()));
-        }
-        return nameAndIds;
+        return getAllFiles()
+                .stream()
+                .map(FileNameAndId::new)
+                .toList();
     }
 
     public List<FileNameAndId> getFilesByGroupId(String group_id) {
-        List<File> files = repository.findAll();
-        List<FileNameAndId> filesByGroupId = new ArrayList<>();
-        for (File file : files) {
-            if (file.getGroup_id().equals(group_id)) {
-                filesByGroupId.add(new FileNameAndId(file.getId(), file.getGroup_id(), file.getFile_name()));
-            }
-        }
-
-        return filesByGroupId;
+        return repository.getFilesByGroupId(group_id)
+                .stream()
+                .map(FileNameAndId::new)
+                .toList();
     }
 
     public String saveFile(File file) {
